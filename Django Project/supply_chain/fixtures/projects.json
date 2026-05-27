@@ -1,0 +1,132 @@
+[
+  {
+    "model": "supply_chain.project",
+    "pk": 1,
+    "fields": {
+      "title": "Infrastructure Upgrade - Phase 1",
+      "description": "Upgrading water supply infrastructure across the region.",
+      "budget": 500000,
+      "council": 1,
+      "slug": "infrastructure-upgrade-phase-1",
+      "created_at": "2025-09-15T10:30:00.000Z",
+      "updated_at": "2025-09-15T10:30:00.000Z"
+    }
+  },
+  {
+    "model": "supply_chain.project",
+    "pk": 2,
+    "fields": {
+      "title": "Digital Transformation Initiative",
+      "description": "Implementing new digital systems for supply chain management.",
+      "budget": 750000,
+      "council": 2,
+      "slug": "digital-transformation-initiative",
+      "created_at": "2025-09-16T11:00:00.000Z",
+      "updated_at": "2025-09-16T11:00:00.000Z"
+    }
+  },
+  {
+    "model": "supply_chain.project",
+    "pk": 3,
+    "fields": {
+      "title": "Sustainability Program",
+      "description": "Green energy integration and waste reduction program.",
+      "budget": 850000,
+      "council": 3,
+      "slug": "sustainability-program",
+      "created_at": "2025-09-18T13:45:00.000Z",
+      "updated_at": "2025-09-18T13:45:00.000Z"
+    }
+  },
+  {
+    "model": "supply_chain.project",
+    "pk": 4,
+    "fields": {
+      "title": "Community Outreach",
+      "description": "Public awareness and education campaign.",
+      "budget": 250000,
+      "council": 4,
+      "slug": "community-outreach",
+      "created_at": "2025-09-19T14:30:00.000Z",
+      "updated_at": "2025-09-19T14:30:00.000Z"
+    }
+  },
+  {
+    "model": "supply_chain.project",
+    "pk": 5,
+    "fields": {
+      "title": "Maintenance & Repairs",
+      "description": "Routine maintenance and emergency repairs across facilities.",
+      "budget": 400000,
+      "council": 5,
+      "slug": "maintenance-repairs",
+      "created_at": "2025-09-20T15:20:00.000Z",
+      "updated_at": "2025-09-20T15:20:00.000Z"
+    }
+  },
+  {
+    "model": "supply_chain.project",
+    "pk": 6,
+    "fields": {
+      "title": "Emergency Response System",
+      "description": "New emergency response protocols and equipment.",
+      "budget": 600000,
+      "council": 6,
+      "slug": "emergency-response-system",
+      "created_at": "2025-09-21T16:00:00.000Z",
+      "updated_at": "2025-09-21T16:00:00.000Z"
+    }
+  },
+  {
+    "model": "supply_chain.project",
+    "pk": 7,
+    "fields": {
+      "title": "Data Analytics Platform",
+      "description": "Advanced data analytics and reporting system.",
+      "budget": 950000,
+      "council": 7,
+      "slug": "data-analytics-platform",
+      "created_at": "2025-09-22T17:10:00.000Z",
+      "updated_at": "2025-09-22T17:10:00.000Z"
+    }
+  },
+  {
+    "model": "supply_chain.project",
+    "pk": 8,
+    "fields": {
+      "title": "Training & Development",
+      "description": "Staff training and professional development programs.",
+      "budget": 320000,
+      "council": 8,
+      "slug": "training-development",
+      "created_at": "2025-09-23T18:25:00.000Z",
+      "updated_at": "2025-09-23T18:25:00.000Z"
+    }
+  },
+  {
+    "model": "supply_chain.project",
+    "pk": 9,
+    "fields": {
+      "title": "Quality Assurance Program",
+      "description": "Implementing comprehensive quality control measures.",
+      "budget": 550000,
+      "council": 9,
+      "slug": "quality-assurance-program",
+      "created_at": "2025-09-24T19:40:00.000Z",
+      "updated_at": "2025-09-24T19:40:00.000Z"
+    }
+  },
+  {
+    "model": "supply_chain.project",
+    "pk": 10,
+    "fields": {
+      "title": "Customer Service Enhancement",
+      "description": "Improving customer service channels and support.",
+      "budget": 180000,
+      "council": 10,
+      "slug": "customer-service-enhancement",
+      "created_at": "2025-09-25T20:15:00.000Z",
+      "updated_at": "2025-09-25T20:15:00.000Z"
+    }
+  }
+]

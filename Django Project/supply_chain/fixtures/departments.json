@@ -1,0 +1,132 @@
+[
+  {
+    "model": "supply_chain.department",
+    "pk": 1,
+    "fields": {
+      "name": "Engineering Division",
+      "description": "Responsible for infrastructure design and implementation.",
+      "council": 1,
+      "project": 1,
+      "slug": "engineering-division",
+      "created_at": "2025-09-15T10:45:00.000Z",
+      "updated_at": "2025-09-15T10:45:00.000Z"
+    }
+  },
+  {
+    "model": "supply_chain.department",
+    "pk": 2,
+    "fields": {
+      "name": "IT Operations",
+      "description": "Manages digital systems and technology infrastructure.",
+      "council": 2,
+      "project": 2,
+      "slug": "it-operations",
+      "created_at": "2025-09-16T11:15:00.000Z",
+      "updated_at": "2025-09-16T11:15:00.000Z"
+    }
+  },
+  {
+    "model": "supply_chain.department",
+    "pk": 3,
+    "fields": {
+      "name": "Environmental Services",
+      "description": "Oversees sustainability initiatives and green programs.",
+      "council": 3,
+      "project": 3,
+      "slug": "environmental-services",
+      "created_at": "2025-09-18T14:00:00.000Z",
+      "updated_at": "2025-09-18T14:00:00.000Z"
+    }
+  },
+  {
+    "model": "supply_chain.department",
+    "pk": 4,
+    "fields": {
+      "name": "Communications",
+      "description": "Handles public relations and community communications.",
+      "council": 4,
+      "project": 4,
+      "slug": "communications",
+      "created_at": "2025-09-19T14:45:00.000Z",
+      "updated_at": "2025-09-19T14:45:00.000Z"
+    }
+  },
+  {
+    "model": "supply_chain.department",
+    "pk": 5,
+    "fields": {
+      "name": "Maintenance Services",
+      "description": "Performs preventative and emergency maintenance.",
+      "council": 5,
+      "project": 5,
+      "slug": "maintenance-services",
+      "created_at": "2025-09-20T15:30:00.000Z",
+      "updated_at": "2025-09-20T15:30:00.000Z"
+    }
+  },
+  {
+    "model": "supply_chain.department",
+    "pk": 6,
+    "fields": {
+      "name": "Emergency Response",
+      "description": "Coordinates emergency response and crisis management.",
+      "council": 6,
+      "project": 6,
+      "slug": "emergency-response",
+      "created_at": "2025-09-21T16:15:00.000Z",
+      "updated_at": "2025-09-21T16:15:00.000Z"
+    }
+  },
+  {
+    "model": "supply_chain.department",
+    "pk": 7,
+    "fields": {
+      "name": "Analytics Division",
+      "description": "Provides data analysis and business intelligence.",
+      "council": 7,
+      "project": 7,
+      "slug": "analytics-division",
+      "created_at": "2025-09-22T17:25:00.000Z",
+      "updated_at": "2025-09-22T17:25:00.000Z"
+    }
+  },
+  {
+    "model": "supply_chain.department",
+    "pk": 8,
+    "fields": {
+      "name": "Human Resources",
+      "description": "Manages staff training and professional development.",
+      "council": 8,
+      "project": 8,
+      "slug": "human-resources",
+      "created_at": "2025-09-23T18:40:00.000Z",
+      "updated_at": "2025-09-23T18:40:00.000Z"
+    }
+  },
+  {
+    "model": "supply_chain.department",
+    "pk": 9,
+    "fields": {
+      "name": "Quality Assurance",
+      "description": "Ensures quality standards across all operations.",
+      "council": 9,
+      "project": 9,
+      "slug": "quality-assurance",
+      "created_at": "2025-09-24T19:50:00.000Z",
+      "updated_at": "2025-09-24T19:50:00.000Z"
+    }
+  },
+  {
+    "model": "supply_chain.department",
+    "pk": 10,
+    "fields": {
+      "name": "Customer Support",
+      "description": "Provides customer service and support channels.",
+      "council": 10,
+      "project": 10,
+      "slug": "customer-support",
+      "created_at": "2025-09-25T20:30:00.000Z",
+      "updated_at": "2025-09-25T20:30:00.000Z"
+    }
+  }
+]
