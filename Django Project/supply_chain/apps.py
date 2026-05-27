@@ -1,0 +1,10 @@
+from django.apps import AppConfig
+
+
+class SupplyChainConfig(AppConfig):
+    default_auto_field = 'django.db.models.BigAutoField'
+    name = 'supply_chain'
+    verbose_name = "Supply Chain Management"
+
+    def ready(self):
+        import supply_chain.signals  
