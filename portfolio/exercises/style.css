@@ -1,0 +1,299 @@
+:root {
+  --header-height: calc(220px - 1cm);
+  --gutter: 16px;
+}
+
+/* Reset box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Segoe UI, Roboto, Arial, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #FFFACD;
+}
+
+/* Header layout: left = 2/3, right = 1/3 */
+.site-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  height: var(--header-height);
+  padding: 0 var(--gutter);
+  background: linear-gradient(90deg, #fff9e6, #fffde7);
+  border-bottom: 1px solid #f0e6c8;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #FFFACD;
+}
+
+/* left takes two parts, right takes one part */
+.header-left {
+  flex: 2 1 0%;
+  text-align: left;
+  min-width: 0;
+}
+
+.header-right {
+  flex: 1 1 0%;
+  text-align: right;
+  min-width: 0;
+}
+
+.site-title {
+  margin: 0;
+  font-size: 1.75rem;
+  line-height: 1.1;
+  color: #333;
+  font-weight: 700;
+  text-align: left;
+}
+
+/* Image Section */
+.image-section {
+  display: flex;
+  align-items: center;
+  height: var(--header-height);
+  position: relative;
+  background: #C3B091;
+  margin-bottom: 24px;
+  border: 1px solid #000;
+  overflow: hidden;
+}
+
+.image-text-left {
+  width: 0.5cm;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: #222;
+  z-index: 2;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+.image-text-right {
+  width: 0.5cm;
+  padding: 0 0.2cm;
+  font-size: 1rem;
+  color: #555;
+  z-index: 2;
+  text-align: center;
+}
+
+.section-image {
+  flex: 1 1 auto;
+  height: 100%;
+  object-fit: cover;
+  margin: 0 0.5cm;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  border: 1px solid #000;
+}
+
+/* Main Body */
+.main-body {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin: 32px 0;
+  background-color: transparent;
+}
+
+.main-section {
+  flex: 1 1 0;
+  display: flex;
+  justify-content: center;
+  background-color: transparent;
+}
+
+.main-box {
+  width: 98%;
+  min-width: 340px;
+  max-width: 900px;
+  min-height: 420px;
+  background: #fff;
+  border: 2px solid #222;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 24px;
+  margin-top: 0.5cm;
+  background-color: #C3B091;
+}
+
+.main-header {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin: 0 0 12px 0;
+  color: #333;
+  text-align: center;
+}
+
+.rectangle-box {
+  min-height: 220px;
+  width: 95%;
+  background: #fff;
+  border: 2px solid #000;
+  border-top: 4px solid #000;
+  border-bottom: 4px solid #000;
+  border-radius: 0;
+  margin-bottom: 14px;
+  align-self: center;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 1.2rem;
+}
+
+.rectangle-box:hover {
+  transform: scale(1.04);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+  z-index: 2;
+}
+
+.ingredient-list {
+  font-size: 0.85rem;
+  margin: 0;
+  padding-left: 3em;
+  font-weight: normal;
+}
+
+.method-list {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.sub-header {
+  margin: 0 0 8px 0;
+  font-size: 1rem;
+  align-self: unset;
+  white-space: normal;
+}
+
+/* Footer */
+.site-footer {
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  background: linear-gradient(90deg, #fff9e6, #fffde7);
+  border: 2px solid #222;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  background-color: #FFFACD;
+}
+
+.footer-content {
+  width: 100%;
+  text-align: center;
+  font-size: 1.1rem;
+  color: #333;
+  font-weight: 500;
+}
+
+main {
+  flex: 1;
+}
+
+/* Reviews Section */
+.reviews-section {
+  width: 100%;
+  padding: 12px 0 24px 0;
+  background: #FFFACD;
+  border: 2px solid #222;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.reviews-header {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 12px;
+  text-align: left;
+  align-self: flex-start;
+  margin-top: 0.2cm;
+}
+
+.reviews-list {
+  text-align: left;
+  align-self: flex-start;
+  margin-left: 0;
+  list-style: none;
+  padding-left: 0;
+}
+
+.reviews-list li {
+  position: relative;
+  padding-left: 32px;
+  margin-bottom: 10px;
+}
+
+.reviews-list li::before {
+  content: '';
+  display: inline-block;
+  background: url('images/fork_spoon_24dp(1).svg') no-repeat center center;
+  background-size: 24px 24px;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  left: 0;
+  top: 2px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    padding: 12px;
+  }
+  .header-left,
+  .header-right {
+    width: 100%;
+    text-align: left;
+  }
+  .site-title {
+    font-size: 1.25rem;
+  }
+  .image-section {
+    flex-direction: column;
+    height: auto;
+  }
+  .image-text-left,
+  .image-text-right {
+    width: 100%;
+    padding: 4px 0;
+  }
+  .section-image {
+    width: 100%;
+    height: auto;
+    margin: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .main-body {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .main-section {
+    justify-content: center;
+  }
+}
