@@ -1,0 +1,74 @@
+/* Navy background for Jazzmin admin */
+/* Main layout backgrounds */
+/* Nude blue background across admin */
+body, .content-wrapper {
+  background-color: #dbeafe !important; /* Nude blue (Tailwind blue-100) */
+}
+
+/* Global text color: black for readability */
+body, p, li, span, div, td, th, .content, .card, .table, .form-control {
+  color: #000000 !important;
+}
+
+/* Keep cards readable on nude blue; set footer to navy */
+.card, .breadcrumb, .callout, .info-box, .small-box {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+}
+.main-footer {
+  background-color: #1e3a8a !important; /* Navy */
+  color: #ffffff !important; /* White text for contrast */
+}
+
+/* Sidebar and header can stay navy; ensure contrast */
+/* Top section/header to navy blue */
+.main-header,
+.navbar,
+.navbar-dark,
+.content-header,
+.page-header,
+.brand-link {
+  background-color: #1e3a8a !important; /* Navy */
+  color: #ffffff !important; /* White text for contrast */
+}
+.navbar a, .brand-link, .content-header h1, .page-header h1 {
+  color: #ffffff !important;
+}
+/* Keep left-hand dashboard/sidebar navy blue */
+.sidebar-dark-primary,
+.main-sidebar {
+  background-color: #1e3a8a !important; /* Navy */
+}
+.sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link,
+.main-sidebar .nav-sidebar > .nav-item > .nav-link {
+  color: #e0e7ff !important; /* Soft light links for contrast */
+}
+.sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active,
+.main-sidebar .nav-sidebar > .nav-item > .nav-link.active {
+  background-color: #1e40af !important; /* Slightly brighter navy for active */
+  color: #ffffff !important;
+}
+
+/* Links and active states */
+.a, a, .nav-link, .brand-link {
+  color: #e0e7ff !important;
+}
+.nav-pills .nav-link.active, .sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active {
+  background-color: #3b82f6 !important;
+  color: #ffffff !important;
+}
+
+/* Table header contrast */
+.table thead th {
+  background-color: #1e3a8a !important;  color: #ffffff !important;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: #1e3a8a !important;
+  border-color: #1e3a8a !important;
+}
+.btn-primary:hover {
+  background-color: #1e40af !important;
+  border-color: #1e40af !important;
+}

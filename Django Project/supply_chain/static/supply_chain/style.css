@@ -1,0 +1,54 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=ADLaM+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Aharoni&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+
+/* Custom Font Classes */
+.font-adlam {
+    font-family: 'ADLaM Display', cursive;
+}
+
+.font-aharoni {
+    font-family: 'Aharoni', serif;
+    font-weight: bold;
+}
+
+.font-britannic {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
+
+/* Apply Aharoni font to all h2 elements */
+h2 {
+    font-family: 'Aharoni', serif;
+    font-weight: bold;
+}
+
+/* Apply ADLaM Display font to h1 elements in header */
+header h1 {
+    font-family: 'ADLaM Display', cursive;
+}
+
+/* Global dark gray text color */
+body, p, li, span, div, td, th {
+    color: #111827; /* Dark Gray (Gray-900) */
+}
+
+/* Ensure readability on white card backgrounds */
+.bg-white, .card, .form-control, .table, .dropdown-menu {
+    color: #1f2937; /* Gray-800 for contrast inside white blocks */
+}
+
+/* Force dark gray text in card content divs on home page */
+.text-gray-900 {
+    color: #111827 !important; /* Gray-900 */
+}
+
+.text-gray-900 p {
+    color: #111827 !important; /* Gray-900 */
+}
+
+/* Keep nav and header titles legible on dark/navy backgrounds */
+nav, header h1, .navbar, .main-header {
+    color: #ffffff;
+}
