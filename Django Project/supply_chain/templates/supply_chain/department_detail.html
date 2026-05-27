@@ -1,0 +1,67 @@
+{% extends "supply_chain/base.html" %}
+{% load static %}
+
+{% block title %}{{ department.name }} - Supply Chain Management{% endblock %}
+
+{% block header_title %}{{ department.name }}{% endblock %}
+
+{% block content %}
+<style>
+    header {
+        position: relative;
+        background-image: url("{% static 'supply_chain/images/' %}{{ department.slug }}.jpg") !important;
+        background-size: cover !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+    }
+    header h1 {
+        position: relative;
+        z-index: 1;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        color: white !important;
+    }
+    header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.3);
+        z-index: 0;
+    }
+    header .absolute {
+        z-index: 1;
+    }
+</style>
+
+<section class="space-y-6">
+    <div class="bg-white rounded-lg border-2 border-blue-900 shadow-sm p-6">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 font-aharoni">Department Overview</h2>
+        <p class="text-gray-700 leading-relaxed">{{ department.description }}</p>
+    </div>
+    
+    <div class="bg-white rounded-lg border-2 border-blue-900 shadow-sm p-6">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 font-aharoni">Mission & Vision</h2>
+        <p class="text-gray-700 leading-relaxed mb-4">Our department is dedicated to excellence in service delivery and operational efficiency. We strive to maintain the highest standards of professional practice while fostering innovation and continuous improvement in all our activities.</p>
+        <p class="text-gray-700 leading-relaxed">Through collaborative teamwork and strategic planning, we aim to deliver sustainable solutions that create lasting value for our organization and the communities we serve. Our commitment to quality, integrity, and accountability guides every decision we make.</p>
+    </div>
+    
+    <div class="bg-white rounded-lg border-2 border-blue-900 shadow-sm p-6">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 font-aharoni">Core Functions</h2>
+        <ul class="list-disc list-inside space-y-2 text-gray-700">
+            <li>Operational management and process optimization</li>
+            <li>Resource planning and allocation</li>
+            <li>Quality control and standards compliance</li>
+            <li>Team coordination and workforce development</li>
+            <li>Performance monitoring and reporting</li>
+            <li>Cross-departmental collaboration and support</li>
+        </ul>
+    </div>
+    
+    <div class="bg-white rounded-lg border-2 border-blue-900 shadow-sm p-6">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 font-aharoni">Get In Touch</h2>
+        <p class="text-gray-700 leading-relaxed">For inquiries, collaboration opportunities, or more information about our services, please contact your council representative or reach out through the appropriate channels. We welcome feedback and are always looking for ways to improve our operations and better serve our stakeholders.</p>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends "supply_chain/base.html" %}
+{% load static %}
+
+{% block title %}{{ project.title }} - Supply Chain Management{% endblock %}
+
+{% block header_title %}{{ project.title }}{% endblock %}
+
+{% block content %}
+<style>
+    header {
+        position: relative;
+        background-image: url("{% static 'supply_chain/images/' %}{{ project.slug }}.jpg") !important;
+        background-size: cover !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+    }
+    header h1 {
+        position: relative;
+        z-index: 1;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        color: white !important;
+    }
+    header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.3);
+        z-index: 0;
+    }
+    header .absolute {
+        z-index: 1;
+    }
+</style>
+
+<section class="space-y-6">
+    <div class="bg-white rounded-lg border-2 border-blue-900 shadow-sm p-6">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 font-aharoni">Project Overview</h2>
+        <div class="space-y-4">
+            <div>
+                <span class="font-semibold text-blue-900">Budget:</span>
+                <span class="text-gray-900 text-lg">£{{ project.budget|floatformat:2 }}</span>
+            </div>
+            <div>
+                <span class="font-semibold text-blue-900">Description:</span>
+                <p class="text-gray-700 mt-2 leading-relaxed">{{ project.description }}</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-lg border-2 border-blue-900 shadow-sm p-6">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 font-aharoni">Project Goals</h2>
+        <p class="text-gray-700 leading-relaxed mb-4">This project aims to deliver exceptional value through strategic implementation and careful resource management. Key objectives include improving operational efficiency, enhancing service delivery, and ensuring sustainable outcomes that benefit all stakeholders.</p>
+        <ul class="list-disc list-inside space-y-2 text-gray-700">
+            <li>Streamline operational processes and workflows</li>
+            <li>Enhance quality standards across all deliverables</li>
+            <li>Foster collaboration between departments and councils</li>
+            <li>Implement best practices and innovative solutions</li>
+            <li>Ensure long-term sustainability and value creation</li>
+        </ul>
+    </div>
+    
+    <div class="bg-white rounded-lg border-2 border-blue-900 shadow-sm p-6">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 font-aharoni">Timeline & Milestones</h2>
+        <p class="text-gray-700 leading-relaxed">The project follows a structured timeline with clearly defined milestones to ensure successful delivery. Regular progress reviews and stakeholder updates maintain transparency and accountability throughout the project lifecycle.</p>
+    </div>
+</section>
+{% endblock %}

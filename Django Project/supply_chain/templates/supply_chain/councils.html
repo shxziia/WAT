@@ -1,0 +1,83 @@
+{% extends "supply_chain/base.html" %}
+{% load static %}
+
+{% block title %}Council - Supply Chain Management{% endblock %}
+
+{% block header_style %}
+<style>
+    header {
+        background-image: url("{% static 'supply_chain/images/poppleton.jpg' %}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    header h1 { color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); }
+    header::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.3); }
+    header .absolute { z-index: 1; }
+</style>
+{% endblock %}
+
+{% block header_title %}Meet Your Council{% endblock %}
+
+{% block content %}
+<section class="space-y-8">
+    <div class="flex flex-col gap-4">
+        <h2 class="text-2xl font-bold text-gray-900 font-aharoni">Councils Information</h2>
+        {% if councils %}
+        <div class="grid gap-4 grid-cols-5" aria-label="Featured councils">
+            {% for council in councils|slice:":5" %}
+            <article class="relative h-32 overflow-hidden rounded-lg border-2 border-blue-900 bg-blue-50 shadow-sm transition shadow-gray-200 group" role="region" aria-labelledby="council-{{ council.id }}">
+                <div class="absolute inset-0 flex items-center justify-center px-4 transition-transform duration-300 group-hover:-translate-x-full">
+                    <h3 id="council-{{ council.id }}" class="text-lg font-semibold text-gray-900 text-center">{{ council.name }}</h3>
+                </div>
+                <div class="absolute inset-0 flex flex-col justify-center px-4 bg-gray-100 transition-transform duration-300 translate-x-full group-hover:translate-x-0">
+                    <p class="text-sm font-semibold text-gray-900">Contact: {{ council.contact }}</p>
+                    <p class="text-sm text-gray-900 break-words">{{ council.contact_email }}</p>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+
+        <div class="grid gap-4 grid-cols-5" aria-label="Additional councils">
+            {% for council in councils|slice:"5:10" %}
+            <article class="relative h-32 overflow-hidden rounded-lg border-2 border-blue-900 bg-blue-50 shadow-sm transition shadow-gray-200 group" role="region" aria-labelledby="council-{{ council.id }}-2">
+                <div class="absolute inset-0 flex items-center justify-center px-4 transition-transform duration-300 group-hover:-translate-x-full">
+                    <h3 id="council-{{ council.id }}-2" class="text-lg font-semibold text-gray-900 text-center">{{ council.name }}</h3>
+                </div>
+                <div class="absolute inset-0 flex flex-col justify-center px-4 bg-gray-100 transition-transform duration-300 translate-x-full group-hover:translate-x-0">
+                    <p class="text-sm font-semibold text-gray-800">Contact: {{ council.contact }}</p>
+                    <p class="text-sm text-blue-700 break-words">{{ council.contact_email }}</p>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+        {% else %}
+            <p class="text-gray-700">No councils found.</p>
+        {% endif %}
+    </div>
+
+    <section class="grid gap-8 lg:grid-cols-2 items-center bg-yellow-50 border-2 border-blue-900 rounded-lg shadow-sm p-8">
+        <div class="space-y-4">
+            <h2 class="text-2xl font-bold text-gray-900 font-aharoni">Latest Council News</h2>
+            <ul class="divide-y divide-gray-200">
+                <li class="py-4">
+                    <div class="text-sm text-gray-600 italic">December 8, 2025</div>
+                    <div class="font-semibold text-gray-900">Regional Council Collaboration Announced</div>
+                    <p class="text-gray-700 mt-1">Multiple councils have agreed to share resources and coordinate supply chain initiatives to improve service delivery across regions.</p>
+                </li>
+                <li class="py-4">
+                    <div class="text-sm text-gray-600 italic">December 5, 2025</div>
+                    <div class="font-semibold text-gray-900">Council Leadership Elections Completed</div>
+                    <p class="text-gray-700 mt-1">New council representatives have been elected across several regions, bringing fresh perspectives to supply chain management.</p>
+                </li>
+                <li class="py-4">
+                    <div class="text-sm text-gray-600 italic">December 1, 2025</div>
+                    <div class="font-semibold text-gray-900">Quarterly Council Performance Review</div>
+                    <p class="text-gray-700 mt-1">Councils achieved record efficiency ratings this quarter, with significant improvements in procurement and distribution timelines.</p>
+                </li>
+            </ul>
+        </div>
+        <img src="{% static 'supply_chain/images/councilimage.jpg' %}" alt="Councils Banner" class="w-full h-96 rounded-lg border-2 border-blue-900 object-cover"/>
+    </section>
+</section>
+{% endblock %}

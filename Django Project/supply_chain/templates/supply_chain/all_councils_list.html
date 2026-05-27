@@ -1,0 +1,18 @@
+{% extends "supply_chain/base.html" %}
+
+{% block title %}All Councils - Supply Chain Management{% endblock %}
+
+{% block content %}
+<section>
+    <h2>All Councils</h2>
+    {% if councils %}
+        <ul>
+            {% for council in councils %}
+                <li>{{ council.name }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>There are no councils in the database.</p>
+    {% endif %}
+</section>
+{% endblock %}

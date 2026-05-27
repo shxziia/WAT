@@ -1,0 +1,71 @@
+{% extends "supply_chain/base.html" %}
+{% load static %}
+
+{% block title %}{{ council.name }} - Supply Chain Management{% endblock %}
+
+{% block header_title %}{{ council.name }}{% endblock %}
+
+{% block content %}
+<style>
+    header {
+        position: relative;
+        background-image: url("{% static 'supply_chain/images/' %}{{ council.slug }}.jpg") !important;
+        background-size: cover !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+    }
+    header h1 {
+        position: relative;
+        z-index: 1;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        color: white !important;
+    }
+    header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.3);
+        z-index: 0;
+    }
+    header .absolute {
+        z-index: 1;
+    }
+</style>
+
+<section class="space-y-6">
+    <div class="bg-white rounded-lg border-2 border-blue-900 shadow-sm p-6">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 font-aharoni">Contact Information</h2>
+        <div class="space-y-4">
+            <div>
+                <span class="font-semibold text-blue-900">Primary Contact:</span>
+                <span class="text-gray-900 text-lg">{{ council.contact }}</span>
+            </div>
+            <div>
+                <span class="font-semibold text-blue-900">Email Address:</span>
+                <span class="text-gray-900">{{ council.contact_email }}</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-lg border-2 border-blue-900 shadow-sm p-6">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 font-aharoni">About This Council</h2>
+        <p class="text-gray-700 leading-relaxed mb-4">{{ council.description|default:"This council plays a vital role in coordinating supply chain operations and ensuring efficient service delivery across the region. Working collaboratively with departments and project teams, the council oversees strategic initiatives and maintains high standards of governance." }}</p>
+        <p class="text-gray-700 leading-relaxed">The council is committed to transparency, innovation, and continuous improvement in all aspects of supply chain management. Through effective leadership and strategic planning, we work to optimize resources, reduce costs, and enhance the quality of services provided to our communities.</p>
+    </div>
+    
+    <div class="bg-white rounded-lg border-2 border-blue-900 shadow-sm p-6">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 font-aharoni">Key Responsibilities</h2>
+        <ul class="list-disc list-inside space-y-2 text-gray-700">
+            <li>Strategic planning and policy development</li>
+            <li>Budget oversight and financial management</li>
+            <li>Project coordination and resource allocation</li>
+            <li>Stakeholder engagement and community relations</li>
+            <li>Performance monitoring and quality assurance</li>
+            <li>Compliance and regulatory adherence</li>
+        </ul>
+    </div>
+</section>
+{% endblock %}

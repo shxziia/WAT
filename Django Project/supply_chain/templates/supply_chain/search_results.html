@@ -1,0 +1,61 @@
+{% extends 'supply_chain/base.html' %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold text-blue-900 mb-6">Search Results for "{{ query }}"</h1>
+    
+    {% if councils or projects or departments %}
+        {% if councils %}
+            <div class="mb-8">
+                <h2 class="text-2xl font-semibold text-blue-900 mb-4">Councils</h2>
+                <ul class="space-y-2">
+                {% for council in councils %}
+                    <li class="bg-white p-4 rounded-lg shadow">
+                        <a href="{% url 'supply_chain:council_detail' council.slug %}" class="text-blue-900 font-semibold hover:underline">{{ council.name }}</a>
+                        {% if council.description %}
+                            <p class="text-gray-600 mt-1">{{ council.description }}</p>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        
+        {% if projects %}
+            <div class="mb-8">
+                <h2 class="text-2xl font-semibold text-blue-900 mb-4">Projects</h2>
+                <ul class="space-y-2">
+                {% for project in projects %}
+                    <li class="bg-white p-4 rounded-lg shadow">
+                        <a href="{% url 'supply_chain:project_detail' project.slug %}" class="text-blue-900 font-semibold hover:underline">{{ project.title }}</a>
+                        {% if project.description %}
+                            <p class="text-gray-600 mt-1">{{ project.description }}</p>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        
+        {% if departments %}
+            <div class="mb-8">
+                <h2 class="text-2xl font-semibold text-blue-900 mb-4">Departments</h2>
+                <ul class="space-y-2">
+                {% for department in departments %}
+                    <li class="bg-white p-4 rounded-lg shadow">
+                        <a href="{% url 'supply_chain:department_detail' department.slug %}" class="text-blue-900 font-semibold hover:underline">{{ department.name }}</a>
+                        {% if department.description %}
+                            <p class="text-gray-600 mt-1">{{ department.description }}</p>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    {% else %}
+        <p class="text-gray-600">No results found.</p>
+    {% endif %}
+    
+    <a href="{% url 'home' %}" class="inline-block mt-6 bg-blue-900 text-white px-6 py-2 rounded hover:bg-blue-800">Back to Home</a>
+</div>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends "supply_chain/base.html" %}
+{% load static %}
+
+{% block title %}Projects - Supply Chain Management{% endblock %}
+
+{% block header_title %}Our Projects{% endblock %}
+{% block header_style %}
+<style>
+  header {
+    background-image: url("{% static 'supply_chain/images/data-analytics-platform.jpg' %}");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  header h1 { color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); }
+  header::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.3); }
+  header .absolute { z-index: 1; }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="space-y-8">
+    <div class="flex flex-col gap-4">
+        <h2 class="text-2xl font-bold text-gray-900 font-aharoni">Projects Information</h2>
+        {% if projects %}
+        <div class="grid gap-4 grid-cols-5" aria-label="Featured projects">
+            {% for project in projects|slice:":5" %}
+            <article class="relative h-32 overflow-hidden rounded-lg border-2 border-blue-900 bg-blue-50 shadow-sm transition shadow-gray-200 group" role="region" aria-labelledby="project-{{ project.id }}">
+                <div class="absolute inset-0 flex items-center justify-center px-4 transition-transform duration-300 group-hover:-translate-x-full">
+                    <h3 id="project-{{ project.id }}" class="text-lg font-semibold text-gray-900 text-center">{{ project.title }}</h3>
+                </div>
+                <div class="absolute inset-0 flex flex-col justify-center px-4 bg-gray-100 transition-transform duration-300 translate-x-full group-hover:translate-x-0">
+                    <p class="text-sm font-semibold text-gray-900">Budget: £{{ project.budget|floatformat:0 }}</p>
+                    <p class="text-sm text-gray-900 mt-1">{{ project.description|truncatewords:8 }}</p>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+
+        <div class="grid gap-4 grid-cols-5" aria-label="Additional projects">
+            {% for project in projects|slice:"5:10" %}
+            <article class="relative h-32 overflow-hidden rounded-lg border-2 border-blue-900 bg-blue-50 shadow-sm transition shadow-gray-200 group" role="region" aria-labelledby="project-{{ project.id }}-2">
+                <div class="absolute inset-0 flex items-center justify-center px-4 transition-transform duration-300 group-hover:-translate-x-full">
+                    <h3 id="project-{{ project.id }}-2" class="text-lg font-semibold text-gray-900 text-center">{{ project.title }}</h3>
+                </div>
+                <div class="absolute inset-0 flex flex-col justify-center px-4 bg-gray-100 transition-transform duration-300 translate-x-full group-hover:translate-x-0">
+                    <p class="text-sm font-semibold text-gray-800">Budget: £{{ project.budget|floatformat:0 }}</p>
+                    <p class="text-sm text-gray-700 mt-1">{{ project.description|truncatewords:8 }}</p>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+        {% else %}
+            <p class="text-gray-700">No projects found.</p>
+        {% endif %}
+    </div>
+
+    <section class="grid gap-8 lg:grid-cols-2 items-center bg-yellow-50 border-2 border-blue-900 rounded-lg shadow-sm p-8">
+        <div class="space-y-4">
+            <h2 class="text-2xl font-bold text-gray-900 font-aharoni">Latest Project News</h2>
+            <ul class="divide-y divide-gray-200">
+                <li class="py-4">
+                    <div class="text-sm text-gray-600 italic">December 8, 2025</div>
+                    <div class="font-semibold text-gray-900"> Infrastructure Upgrade - Phase 1</div>
+                    <p class="text-gray-700 mt-1">Phase 1 infrastructure improvements are progressing faster than anticipated, with completion expected two weeks early.</p>
+                </li>
+                <li class="py-4">
+                    <div class="text-sm text-gray-600 italic">December 5, 2025</div>
+                    <div class="font-semibold text-gray-900">New Digital Platform Launch Success</div>
+                    <p class="text-gray-700 mt-1">The digital transformation initiative successfully launched its first module, receiving positive feedback from all stakeholders.</p>
+                </li>
+                <li class="py-4">
+                    <div class="text-sm text-gray-600 italic">December 1, 2025</div>
+                    <div class="font-semibold text-gray-900">Sustainability Goals Exceeded</div>
+                    <p class="text-gray-700 mt-1">Green energy projects have surpassed Q4 targets, with a 25% reduction in carbon emissions across operations.</p>
+                </li>
+            </ul>
+        </div>
+         <img src="{% static 'supply_chain/images/projectimage.jpg' %}" alt="Latest Project Image" class="w-full h-96 rounded-lg border-2 border-blue-900 object-cover"/>
+    </section>
+</section>
+{% endblock %}

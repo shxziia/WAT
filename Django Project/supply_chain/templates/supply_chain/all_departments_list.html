@@ -1,0 +1,18 @@
+{% extends "supply_chain/base.html" %}
+
+{% block title %}All Departments - Supply Chain Management{% endblock %}
+
+{% block content %}
+<section>
+    <h2>All Departments</h2>
+    {% if departments %}
+        <ul>
+            {% for department in departments %}
+                <li>{{ department.name }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>There are no departments in the database.</p>
+    {% endif %}
+</section>
+{% endblock %}

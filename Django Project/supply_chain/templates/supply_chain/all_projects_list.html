@@ -1,0 +1,18 @@
+{% extends "supply_chain/base.html" %}
+
+{% block title %}All Projects - Supply Chain Management{% endblock %}
+
+{% block content %}
+<section>
+    <h2>All Projects</h2>
+    {% if projects %}
+        <ul>
+            {% for project in projects %}
+                <li>{{ project.title }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>There are no projects in the database.</p>
+    {% endif %}
+</section>
+{% endblock %}

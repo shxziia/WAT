@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Supply Chain Management{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{% static 'supply_chain/style.css' %}">
+    <style>
+        .dropdown-menu {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease-in-out, visibility 0s linear 1s;
+            visibility: hidden;
+        }
+        .group:hover .dropdown-menu,
+        .group:focus-within .dropdown-menu,
+        .dropdown-menu:hover {
+            opacity: 1;
+            pointer-events: auto;
+            transition: opacity 0.2s ease-in-out, visibility 0s linear 0s;
+            visibility: visible;
+        }
+        .dropdown-group::before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            height: 0.5rem;
+        }
+        /* Force dark gray text on dropdown menu items */
+        .dropdown-menu li,
+        .dropdown-menu a,
+        .dropdown-menu li a {
+            color: #1f2937 !important;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-yellow-50 flex flex-col">
+    <nav aria-label="Main Navigation" class="bg-blue-900 text-white py-4 px-5 flex items-center justify-center gap-6 relative z-20">
+        <div class="flex items-center gap-4 absolute left-5">
+            <img src="{% static 'supply_chain/images/logo.jpg' %}" alt="Logo" class="w-16 h-16 rounded-full border-2 border-blue-100 shadow-md object-cover">
+            {% if user.is_authenticated %}
+                <span class="text-white font-semibold">Hello, {{ user.username }}</span>
+            {% endif %}
+        </div>
+        <div class="flex items-center gap-4">
+            <a class="font-semibold px-3 py-2 rounded text-yellow-50 hover:bg-yellow-50 hover:text-blue-900 transition" href="/">Home</a>
+
+            <div class="relative group dropdown-group">
+                <a class="font-semibold px-3 py-2 rounded text-yellow-50 hover:bg-yellow-50 hover:text-blue-900 transition inline-flex items-center gap-1" href="/supply_chain/councils/">Councils</a>
+                <div class="dropdown-menu absolute left-0 top-full w-48 bg-white text-gray-900 border border-blue-900 rounded-lg shadow-lg">
+                    <ul class="divide-y divide-blue-100 max-h-64 overflow-y-auto">
+                        {% for council in nav_councils %}
+                        <li>
+                            <a class="block px-3 py-2 hover:bg-blue-50" href="{% url 'supply_chain:council_detail' council.slug %}">{{ council.name }}</a>
+                        </li>
+                        {% empty %}
+                        <li class="px-3 py-2 text-sm text-gray-500">No councils</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+            <div class="relative group dropdown-group">
+                <a class="font-semibold px-3 py-2 rounded text-yellow-50 hover:bg-yellow-50 hover:text-blue-900 transition inline-flex items-center gap-1" href="/supply_chain/projects/">Projects</a>
+                <div class="dropdown-menu absolute left-0 top-full w-56 bg-white text-blue-900 border border-blue-900 rounded-lg shadow-lg">
+                    <ul class="divide-y divide-blue-100 max-h-64 overflow-y-auto">
+                        {% for project in nav_projects %}
+                        <li>
+                            <a class="block px-3 py-2 hover:bg-blue-50" href="{% url 'supply_chain:project_detail' project.slug %}">{{ project.title }}</a>
+                        </li>
+                        {% empty %}
+                        <li class="px-3 py-2 text-sm text-gray-500">No projects</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+            <div class="relative group dropdown-group">
+                <a class="font-semibold px-3 py-2 rounded text-yellow-50 hover:bg-yellow-50 hover:text-blue-900 transition inline-flex items-center gap-1" href="/supply_chain/departments/">Departments</a>
+                <div class="dropdown-menu absolute left-0 top-full w-56 bg-white text-blue-900 border border-blue-900 rounded-lg shadow-lg">
+                    <ul class="divide-y divide-blue-100 max-h-64 overflow-y-auto">
+                        {% for department in nav_departments %}
+                        <li>
+                            <a class="block px-3 py-2 hover:bg-blue-50" href="{% url 'supply_chain:department_detail' department.slug %}">{{ department.name }}</a>
+                        </li>
+                        {% empty %}
+                        <li class="px-3 py-2 text-sm text-gray-500">No departments</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="ml-auto flex gap-4">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'logout' %}" class="font-semibold px-3 py-2 rounded text-yellow-50 hover:bg-yellow-50 hover:text-blue-900 transition">Logout</a>
+                {% else %}
+                    <a href="{% url 'login' %}" class="font-semibold px-3 py-2 rounded text-yellow-50 hover:bg-yellow-50 hover:text-blue-900 transition">Login</a>
+                {% endif %}
+            </div>
+        </div>
+        <form method="get" action="/search/" class="flex items-center gap-2 absolute right-5">
+            <input type="text" name="q" placeholder="Search..." class="w-48 rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+            <button type="submit" class="rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">Search</button>
+        </form>
+    </nav>
+    {% block header_style %}{% endblock %}
+    <header class="w-full bg-blue-900 text-white p-10 min-h-[220px] flex items-center border-y-2 border-blue-900 text-left relative overflow-hidden z-0">
+        <h1 class="m-0 text-4xl leading-tight font-bold font-adlam">{% block header_title %}Supply Chain Management{% endblock %}</h1>
+    </header>
+    <main class="p-5 flex-1">
+        {% block content %}
+        <!-- Page specific content will go here -->
+        {% endblock %}
+    </main>
+    <footer class="bg-blue-900 text-white text-center py-4 mt-auto">
+        <p class="m-0">&copy; 2025 Supply Chain Inc.</p>
+    </footer>
+</body>
+</html>
+                

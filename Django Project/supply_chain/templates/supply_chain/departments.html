@@ -1,0 +1,80 @@
+{% extends "supply_chain/base.html" %}
+{% load static %}
+
+{% block title %}Departments - Supply Chain Management{% endblock %}
+
+{% block header_title %}Our Departments{% endblock %}
+
+{% block content %}
+<section class="space-y-8">
+    <div class="flex flex-col gap-4">
+                {% block header_style %}
+                <style>
+                    header {
+                        background-image: url("{% static 'supply_chain/images/engineering-division.jpg' %}");
+                        background-size: cover;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                    }
+                    header h1 { color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); }
+                    header::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.3); }
+                    header .absolute { z-index: 1; }
+                </style>
+                {% endblock %}
+        <h2 class="text-2xl font-bold text-gray-900 font-aharoni">Departments Information</h2>
+        {% if departments %}
+        <div class="grid gap-4 grid-cols-5" aria-label="Featured departments">
+            {% for department in departments|slice:":5" %}
+            <article class="relative h-32 overflow-hidden rounded-lg border-2 border-blue-900 bg-blue-50 shadow-sm transition shadow-gray-200 group" role="region" aria-labelledby="department-{{ department.id }}">
+                <div class="absolute inset-0 flex items-center justify-center px-4 transition-transform duration-300 group-hover:-translate-x-full">
+                    <h3 id="department-{{ department.id }}" class="text-lg font-semibold text-gray-900 text-center">{{ department.name }}</h3>
+                </div>
+                <div class="absolute inset-0 flex flex-col justify-center px-4 bg-gray-100 transition-transform duration-300 translate-x-full group-hover:translate-x-0">
+                    <p class="text-sm text-gray-900">{{ department.description|truncatewords:10 }}</p>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+
+        <div class="grid gap-4 grid-cols-5" aria-label="Additional departments">
+            {% for department in departments|slice:"5:10" %}
+            <article class="relative h-32 overflow-hidden rounded-lg border-2 border-blue-900 bg-blue-50 shadow-sm transition shadow-gray-200 group" role="region" aria-labelledby="department-{{ department.id }}-2">
+                <div class="absolute inset-0 flex items-center justify-center px-4 transition-transform duration-300 group-hover:-translate-x-full">
+                    <h3 id="department-{{ department.id }}-2" class="text-lg font-semibold text-gray-900 text-center">{{ department.name }}</h3>
+                </div>
+                <div class="absolute inset-0 flex flex-col justify-center px-4 bg-gray-100 transition-transform duration-300 translate-x-full group-hover:translate-x-0">
+                    <p class="text-sm text-gray-700">{{ department.description|truncatewords:10 }}</p>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+        {% else %}
+            <p class="text-gray-700">No departments available.</p>
+        {% endif %}
+    </div>
+
+    <section class="grid gap-8 lg:grid-cols-2 items-center bg-yellow-50 border-2 border-blue-900 rounded-lg shadow-sm p-8">
+        <div class="space-y-4">
+            <h2 class="text-2xl font-bold text-gray-900 font-aharoni">Latest Department News</h2>
+            <ul class="divide-y divide-gray-200">
+                <li class="py-4">
+                    <div class="text-sm text-gray-600 italic">December 8, 2025</div>
+                    <div class="font-semibold text-gray-900">Engineering Division Receives Award</div>
+                    <p class="text-gray-700 mt-1">The Engineering Division has been recognized for excellence in infrastructure innovation and design.</p>
+                </li>
+                <li class="py-4">
+                    <div class="text-sm text-gray-600 italic">December 5, 2025</div>
+                    <div class="font-semibold text-gray-900">IT Operations Completes System Upgrade</div>
+                    <p class="text-gray-700 mt-1">All digital systems have been successfully upgraded with zero downtime, improving performance by 40%.</p>
+                </li>
+                <li class="py-4">
+                    <div class="text-sm text-gray-600 italic">December 1, 2025</div>
+                    <div class="font-semibold text-gray-900">Cross-Department Collaboration Initiative</div>
+                    <p class="text-gray-700 mt-1">New interdepartmental workflows have been established to enhance communication and efficiency across teams.</p>
+                </li>
+            </ul>
+        </div>
+            <img src="{% static 'supply_chain/images/departmentimage.jpg' %}" alt="Departments Banner" class="w-full h-96 rounded-lg border-2 border-blue-900 object-cover"/>
+    </section>
+</section>
+{% endblock %}
