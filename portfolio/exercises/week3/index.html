@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Talk Rat Talk — Week 3</title>
+		<style>
+			/* Header layout: three sections */
+			.site-header {
+				display: grid;
+				grid-template-columns: 80px 1fr 220px;
+				align-items: center;
+				gap: 16px;
+				padding: 16px 24px;
+				background: #f7f7f9;
+				border-bottom: 1px solid #e1e1e6;
+			}
+
+			/* Left: circular placeholder */
+			.header-left {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+
+			.avatar {
+				width: 64px;
+				height: 64px;
+				border-radius: 50%;
+				background: linear-gradient(135deg,#dcdcdc,#bfbfbf);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				color: #666;
+				font-size: 12px;
+				font-weight: 600;
+				box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+			}
+
+			/* Center: title */
+			.header-center {
+				text-align: center;
+			}
+
+			.site-title {
+				margin: 0;
+				font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+				font-size: 28px;
+				letter-spacing: 0.4px;
+				color: #222;
+			}
+
+			/* Right: small caption anchored to the bottom */
+			.header-right {
+				display: flex;
+				align-items: flex-end; /* keep children at bottom of this column */
+				justify-content: center;
+				padding-bottom: 6px;
+				align-self: stretch; /* make this column stretch to header height */
+			}
+
+			.small-caption {
+				font-size: 12px;
+				color: #666;
+				font-style: italic;
+			}
+
+			/* Responsive tweaks */
+			@media (max-width: 640px) {
+				.site-header {
+					grid-template-columns: 64px 1fr;
+				}
+				.header-right { display: none; }
+			}
+
+			/* Navigation bar */
+			.site-nav {
+				display: flex;
+				justify-content: center;
+				padding: 12px 16px;
+				background: white;
+				border-bottom: 1px solid #eee;
+			}
+
+			.site-nav ul {
+				list-style: none;
+				display: flex;
+				gap: 12px;
+				padding: 0;
+				margin: 0;
+			}
+
+			.nav-button {
+				display: inline-block;
+				padding: 8px 14px;
+				border-radius: 8px;
+				background: #007acc;
+				color: white;
+				text-decoration: none;
+				font-weight: 600;
+				box-shadow: 0 2px 0 rgba(0,0,0,0.05);
+			}
+
+			.nav-button:hover,
+			.nav-button:focus {
+				background: #005fa3;
+				outline: none;
+			}
+
+			@media (max-width: 480px) {
+				.site-nav ul { flex-direction: column; align-items: stretch; }
+				.nav-button { width: 100%; text-align: center; }
+			}
+
+			/* Main two-column layout */
+			.page-main {
+				display: grid;
+				grid-template-columns: 1fr 4fr; /* left: 1/5, right: 4/5 */
+				grid-template-rows: auto auto; /* make two rows so left can be placed between them */
+				gap: 24px;
+				align-items: start;
+			}
+
+			.main-left {
+				padding: 12px;
+				background: #fff;
+				border: 1px solid #eee;
+				border-radius: 8px;
+				display: flex;
+				flex-direction: column;
+				justify-content: center; /* vertical centering */
+				align-items: center;
+				grid-row: 1 / span 2; /* span both rows so we can center vertically */
+				align-self: center; /* center the left column vertically within the grid area */
+			}
+
+			.main-right {
+				padding: 12px;
+				grid-row: 1 / span 2; /* span both rows so cards occupy both rows on the right */
+			}
+
+			.cards {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 12px;
+			}
+
+			/* Header above the cards on the right column */
+			.cards-header {
+				margin-bottom: 10px;
+			}
+
+			.cards-heading {
+				margin: 0 0 8px 0;
+				font-size: 18px;
+				color: #222;
+				text-align: left; /* left align while staying in the right column */
+			}
+
+			.card {
+				border: 1px solid #ddd;
+				border-radius: 8px;
+				padding: 12px;
+				background: #fff;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				text-align: center;
+			}
+
+			.card-avatar {
+				width: 72px;
+				height: 72px;
+				border-radius: 50%;
+				background: linear-gradient(135deg,#e6e6e6,#cfcfcf);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-weight: 700;
+				color: #666;
+				margin-bottom: 10px;
+			}
+
+			/* Small card in left column */
+			.small-card {
+				width: 100%;
+				max-width: 320px;
+				border: 1px solid #ddd;
+				border-radius: 8px;
+				padding: 20px 16px;
+				min-height: 260px; /* make the small card visibly longer */
+				background: #fff;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				text-align: center;
+				box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+				position: relative;
+				z-index: 5; /* ensure it's above the card column */
+			}
+
+			.small-card-avatar {
+				width: 56px;
+				height: 56px;
+				border-radius: 50%;
+				background: linear-gradient(135deg,#e6e6e6,#cfcfcf);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-weight: 700;
+				color: #666;
+				margin-bottom: 8px;
+			}
+
+			.small-card-title {
+				margin: 0 0 6px 0;
+				font-size: 15px;
+				color: #222;
+			}
+
+			.small-card-text {
+				margin: 0;
+				font-size: 14px;
+				color: #444;
+			}
+
+			.card-title {
+				margin: 0 0 8px 0;
+				font-size: 16px;
+				color: #222;
+			}
+
+			.card-list {
+				text-align: left;
+				padding-left: 18px;
+				margin: 10px 0 0 0;
+				color: #444;
+				font-size: 14px;
+			}
+
+			@media (max-width: 900px) {
+				.page-main { grid-template-columns: 1fr; grid-template-rows: none; }
+				.cards { grid-template-columns: 1fr 1fr; }
+				.main-left { grid-row: auto; }
+				.main-right { grid-row: auto; }
+			}
+
+			@media (max-width: 480px) {
+				.cards { grid-template-columns: 1fr; }
+			}
+
+			/* Footer (normal page flow) */
+			.site-footer {
+				width: 100%;
+				height: 56px;
+				background: #222;
+				color: #fff;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				box-shadow: 0 -2px 6px rgba(0,0,0,0.12);
+				margin-top: 32px;
+			}
+		</style>
+	</head>
+	<body>
+		<header class="site-header">
+			<div class="header-left">
+				<div class="avatar" aria-hidden="true">IMG</div>
+			</div>
+			<div class="header-center">
+				<h1 class="site-title">Talk Rat Talk</h1>
+			</div>
+			<div class="header-right">
+				<div class="small-caption">chasing through life</div>
+			</div>
+		</header>
+
+		<nav class="site-nav" aria-label="Primary">
+			<ul>
+				<li><a class="nav-button" href="#">Ratus Adventures</a></li>
+				<li><a class="nav-button" href="#">Nibbles and leaf</a></li>
+				<li><a class="nav-button" href="#">Talk end stories</a></li>
+				<li><a class="nav-button" href="#">Cat Napped</a></li>
+			</ul>
+		</nav>
+
+		<main class="page-main" style="padding:24px;">
+			<section class="main-left">
+				<div class="small-card">
+					<div class="small-card-avatar">IMG</div>
+					<h4 class="small-card-title">Jok of the Day</h4>
+					<p class="small-card-text">Why did the rat bring a pencil to the party? To draw attention.</p>
+				</div>
+			</section>
+			<section class="main-right">
+					<header class="cards-header" aria-hidden="true">
+						<h2 class="cards-heading">Rat-ified means I squeked approval.</h2>
+					</header>
+				<div class="cards">
+					<article class="card">
+						<h3 class="card-title">Card One</h3>
+						<div class="card-avatar">IMG</div>
+						<p>Card one: a short sentence describing this card.</p>
+						<ul class="card-list">
+							<li>Bullet point one</li>
+							<li>Bullet point two</li>
+							<li>Bullet point three</li>
+							<li>Bullet point four</li>
+							<li>Bullet point five</li>
+							<li>Bullet point six</li>
+						</ul>
+					</article>
+					<article class="card">
+						<h3 class="card-title">Card Two</h3>
+						<div class="card-avatar">IMG</div>
+						<p>Card two: another short sentence goes here.</p>
+						<ul class="card-list">
+							<li>Bullet point one</li>
+							<li>Bullet point two</li>
+							<li>Bullet point three</li>
+							<li>Bullet point four</li>
+							<li>Bullet point five</li>
+							<li>Bullet point six</li>
+						</ul>
+					</article>
+
+					<article class="card">
+						<h3 class="card-title">Card Three</h3>
+						<div class="card-avatar">IMG</div>
+						<p>Card three: yet another descriptive sentence.</p>
+						<ul class="card-list">
+							<li>Bullet point one</li>
+							<li>Bullet point two</li>
+							<li>Bullet point three</li>
+							<li>Bullet point four</li>
+							<li>Bullet point five</li>
+							<li>Bullet point six</li>
+						</ul>
+					</article>
+					<article class="card">
+						<h3 class="card-title">Card Four</h3>
+						<div class="card-avatar">IMG</div>
+						<p>Card four: final card with a short line.</p>
+						<ul class="card-list">
+							<li>Bullet point one</li>
+							<li>Bullet point two</li>
+							<li>Bullet point three</li>
+							<li>Bullet point four</li>
+							<li>Bullet point five</li>
+							<li>Bullet point six</li>
+						</ul>
+					</article>
+				</div>
+			</section>
+		</main>
+
+		<footer class="site-footer">
+			<div class="footer-inner">© Talk Rat Talk — chasing through life</div>
+		</footer>
+	</body>
+</html>
+
