@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400">
+  <rect width="1200" height="400" fill="#1e3a8a"/>
+  <circle cx="1100" cy="80" r="220" fill="#fef3c7" opacity="0.2"/>
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="50" fill="#ffffff" font-family="Arial, sans-serif">Projects Banner</text>
+</svg>
